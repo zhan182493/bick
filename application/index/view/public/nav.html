@@ -1,0 +1,38 @@
+<div id="navi">
+
+<ul id="jsddm">
+<li><a class="navi_home" href="/">首页</a></li>
+{volist name="cateres" id="vo"}
+<li><a href="
+{if condition="$vo['type'] eq 1"}
+{:url('artlist/artlist')}
+{elseif condition="$vo['type'] eq 2"}
+{:url('page/page')}
+{elseif condition="$vo['type'] eq 3"}
+{:url('imglist/imglist')}
+{/if}
+">{$vo['catename']}
+</a>
+    {if condition="$vo['children'] neq 0"}
+    <ul>
+    {volist name="$vo['children']" id="val"}
+    <li><a href="
+    {if condition="$vo['type'] eq 1"}
+    {:url('artlist/artlist')}
+    {elseif condition="$vo['type'] eq 2"}
+    {:url('page/page')}
+    {elseif condition="$vo['type'] eq 3"}
+    {:url('imglist/imglist')}
+    {/if}
+    ">{$val['catename']}</a></li>
+    {/volist}
+    </ul>
+    {/if}
+</li>
+{/volist}
+
+</ul>
+<div style="clear: both;">
+</div>
+      
+</div>
