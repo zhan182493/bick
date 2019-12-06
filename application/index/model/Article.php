@@ -8,6 +8,8 @@ class Article extends Model
 	public function getAllArticles($cateid){
 		$cate=new Cate();
 		$allCateId=$cate->getchilrenid($cateid);
-		$allArticles=$this->where('cateid IN($allCateId)')->paginate(6);
+		// dump($allCateId);die;
+		$allArticles=db('article')->where("cateid IN ($allCateId)")->paginate(5);
+		return $allArticles;
 	}
-}
+} 

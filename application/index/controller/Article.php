@@ -6,8 +6,10 @@ use app\index\model\Article as ArticleModel;
 class Article extends Common
 {
 	public function article(){
-		
-		return view();	
+		dump(input('artid'));die;
+		$artRes=db('article')->find(input('artid'));
+		$this->assign('artRes',$artRes);
+		return view();
 	}
 	
 }

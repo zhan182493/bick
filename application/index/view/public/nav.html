@@ -5,11 +5,11 @@
 {volist name="cateres" id="vo"}
 <li><a href="
 {if condition="$vo['type'] eq 1"}
-{:url('artlist/artlist')}
+{:url('artlist/artlist',array('cateid'=>$vo['id']))}
 {elseif condition="$vo['type'] eq 2"}
 {:url('page/page')}
 {elseif condition="$vo['type'] eq 3"}
-{:url('imglist/imglist')}
+{:url('imglist/imglist',array('cateid'=>$vo['id']))}
 {/if}
 ">{$vo['catename']}
 </a>
@@ -18,11 +18,11 @@
     {volist name="$vo['children']" id="val"}
     <li><a href="
     {if condition="$vo['type'] eq 1"}
-    {:url('artlist/artlist')}
+    {:url('artlist/artlist',array('cateid'=>$val['id']))}
     {elseif condition="$vo['type'] eq 2"}
     {:url('page/page')}
     {elseif condition="$vo['type'] eq 3"}
-    {:url('imglist/imglist')}
+    {:url('imglist/imglist',array('cateid'=>$val['id']))}
     {/if}
     ">{$val['catename']}</a></li>
     {/volist}
