@@ -1,0 +1,23 @@
+
+<div class="path" style="margin-left: 15px;margin-right: 16px;background-color: #f4f4f4;">
+	<a href='/'>主页</a> 
+	> 
+	{if condition="isset($position)"}
+	{volist name="position" id="val"}
+	{if condition="$val['type'] eq 1"}
+	<a href="{:url('artlist/artlist',array('cateid'=>$val['id']))}">
+	{elseif condition="$val['type'] eq 2"}
+	<a href="javascript:;">
+	{elseif condition="$val['type'] eq 3"}
+	<a href="{:url('imglist/imglist',array('cateid'=>$val['id']))}">
+	{else /}
+	<a href="{:url('article/article',array('cateid'=>$val['id']))}">
+	{/if}
+	{$val.catename}</a> 
+	> 
+	{/volist}
+	{else /}
+	<a href='/'>搜索</a> 
+	> 
+	{/if}
+</div>

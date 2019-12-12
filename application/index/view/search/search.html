@@ -2,9 +2,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>{$cateInfo.catename}</title>
-<meta name="description" content="{$cateInfo.desc}" />
-<meta name="keywords" content="{$cateInfo.keywords}" />
+<title>搜索</title>
+<meta name="description" content="search" />
+<meta name="keywords" content="search" />
 <link href="__STYLE__/bootstrap.css" rel="stylesheet">
     <script src="__STYLE__/bootstrap.js"></script>
 
@@ -41,7 +41,7 @@
 </script>
 <div id="mask" class="mask" onclick="CloseMask()"></div> 
 <div id="header_wrap">
-    {include file="public/header"}
+{include file="public/header"}
 </div>
 
 </div>
@@ -51,9 +51,18 @@
     <div id="xh_container" style="min-height: 756px;">
         <div id="xh_content">
 
-        {include file="public/position"}
-            <div class="xh_area_h_3" style="margin-top: 40px;">
-{volist name="artRes" id="val"}
+        <div class="path" style="margin-left: 15px;margin-right: 16px;background-color: #f4f4f4;">
+    搜索结果：
+    > 
+    </div>
+            <div style="margin-top: 20px;" class="xh_area_h_3" style="margin-top: 40px;">
+{if condition="$keywords eq '' "}
+
+<div style="margin-bottom: 20px;">>>>>>搜索&nbsp<strong style="color: green">{$keywords}</strong>&nbsp结果为:    <strong style="color: red;font-size: 16px;">空</strong></div>
+{else /}
+
+{volist name="searchRes" id="val"}
+
     <div class="xh_post_h_3 ofh">
         <div class="xh">
             <a target="_blank" href="{:url('article/article',array('artid'=>$val['id']))}" title="{$val['title']}">
@@ -78,13 +87,14 @@
         </div>
     </div>                   
 {/volist}
+{/if}
 <div class="wp-pagenavi">
-                {$artRes->render()}
-
+{if condition="$keywords neq '' "}
+                {$searchRes->render()}
+{/if}
                 </div>
             </div>
         </div>
-        
         <div id="xh_sidebar"> 
                
 <!-- 右侧 -->
@@ -105,16 +115,12 @@
             
             <div class="widget portrait">
     <div>
-        <div class="textwidget">
-            <a href="/tougao.html"><img src="__IMAGES__/tg.jpg" alt=""></a><br><br>          
-<script type="text/javascript">BAIDU_CLB_fillSlot("870073");</script>
-<script type="text/javascript">BAIDU_CLB_fillSlot("870080");</script>
-<script type="text/javascript">BAIDU_CLB_fillSlot("870081");</script>
-        </div>
     </div>
 </div>
 
         </div>
+
+
         <div class="clear">
         </div>
     </div>

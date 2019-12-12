@@ -2,6 +2,7 @@
 namespace app\index\controller;
 use think\Controller;
 use app\index\model\Conf;
+use app\index\model\Cate;
 use app\index\model\Article;
 
 class Common extends Controller
@@ -17,8 +18,21 @@ class Common extends Controller
 		}elseif (input('artid')) {
 			$artres=db('article')->find(input('artid'));
 			$cateid=$artres['cateid'];
+			// dump($cateid);die;
 			$this->getArticles($cateid);
 		}
+		//获取所有父级栏目名(当前位置模块)
+		if(input('cateid')){
+			$this->getPCatenames(input('cateid'));
+		}elseif (input('artid')) {
+			$artres=db('article')->find(input('artid'));
+			$cateid=$artres['cateid'];
+			// dump($cateid);die;
+			$this->getPCatenames($cateid);
+		}
+
+		//获取关键词等页面信息
+		$this->getCateInfo(input('cateid'));
 		
 	}
 
@@ -50,7 +64,19 @@ class Common extends Controller
 
 	public function getArticles($cateid){
 		$article=new Article();
-		$artRes=$article->getAllArticles(input('cateid'));
+		$artRes=$article->getAllArticles($cateid);
 		$this->assign('artRes',$artRes);
+	}
+
+	public function getPCatenames($cateid){
+		$cate=new Cate();
+		$position=$cate->getParentCname($cateid);
+		// dump($position);die;
+		$this->assign('position',$position);
+	}
+
+	public function getCateInfo($cateid){
+		$cateInfo=db('cate')->field('catename,keywords,desc')->find($cateid);
+		$this->assign('cateInfo',$cateInfo);
 	}
 }

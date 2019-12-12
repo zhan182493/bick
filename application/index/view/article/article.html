@@ -2,9 +2,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>童老师ThinkPHP5交流群：484519446</title>
-<meta name="description" content="童老师ThinkPHP5交流群：484519446" />
-<meta name="keywords" content="童老师ThinkPHP5交流群：484519446" />
+<title>{$artRes.title}</title>
+<meta name="description" content="{$artRes.desc}" />
+<meta name="keywords" content="{$artRes.keywords}" />
 <link rel="stylesheet" type="text/css" media="all" href="__STYLE__/style.css" />       
 <script src="__STYLE__/jquery-1.4.1.min.js" type="text/javascript"></script>
     <script src="__STYLE__/jquery.js" type="text/javascript"></script>
@@ -129,31 +129,8 @@ function ILike(th, v) {
 </script>
 <div id="mask" class="mask" onclick="CloseMask()"></div> 
 <div id="header_wrap">
-    <div id="header">
-        <div style="float: left; width: 310px;">
-            <h1>
-                <a href="/" title="宽屏大气文章类--41天鹰模板">宽屏大气文章类--41天鹰模板</a>
-                <div class="" id="logo-sub-class">
-                </div>
-            </h1>
-        </div>
-{include file="public/nav"}
-        <div style="float: right; width: 209px;">
-            <div class="widget" style="height: 30px; padding-top: 20px;">
-                <div style="float: left;">
-      <form  name="formsearch" action="/plus/search.php"><input type="hidden" name="kwtype" value="0" />                
-<input name="q" type="text" style="background-color: #000000;padding-left: 10px; font-size: 12px;font-family: 'Microsoft Yahei'; color: #999999;height: 29px; width: 160px; border: solid 1px #666666; line-height: 28px;" id="go" value="在这里搜索..." onfocus="if(this.value=='在这里搜索...'){this.value='';}"  onblur="if(this.value==''){this.value='在这里搜索...';}" />
-        </form>
-                        </div>
-                <div style="float: left;">
-                    <img src="__IMAGES__/search-new.png" id="imgSearch" style="cursor: pointer; margin: 0px;
-                        padding: 0px;" onclick="subForm()"  /></div>
-                <div style="clear: both;">
-                </div>
-            </div>
-        </div>
-        
-    </div>
+{include file="public/header"}
+    
 </div>
 
 </div>
@@ -164,7 +141,7 @@ function ILike(th, v) {
             <div id="content">
                 <div class="post" id="post-19563" style="border-right: solid 1px #000000; min-height: 1700px;
                     margin-top: 10px;">
-                    <div class="path"><a href='#'>主页</a> > <a href='/life/'>单车生活</a> > </div>
+                    {include file="public/position"}
                     <div class="single_entry single2_entry">
                         <div class="entry fewcomment">
                             <div class="title_container">
@@ -256,7 +233,7 @@ function ILike(th, v) {
                 <div class="widget single" style="margin-bottom: 0px; margin-left: 0px; margin-top: 40px;
                     padding-bottom: 0px;" id="newdigg">
                     <div class="single_views" onmouseout="ILike(this,false)" onmouseover="ILike(this,true)">
-                        <span class="textcontainer"><span class="votecount26536">0</span></span> <span class="bartext voteid26536"><a href="#"
+                        <span class="textcontainer"><span class="votecount26536">{$artRes.zan}</span></span> <span class="bartext voteid26536"><a href="#"
                                 id="aZanImg" onclick="javascript:postDigg('good',382)"></a></span><span class="text" id="spanZan">赞</span>
                         <span class="text love">人</span>
                     </div>
@@ -271,44 +248,14 @@ function ILike(th, v) {
 <div style="background: url('__IMAGES__/hots_bg.png') no-repeat scroll 0 0 transparent;width:250px;height:52px;margin-bottom:15px;">
 </div>
 <ul id="ulHot">
-
+{volist name="hotArt" id="val"}
 <li style="border-bottom:dashed 1px #ccc;height:70px; margin-bottom:15px;">
-<div style="float:left;width:85px;height:55px; overflow:hidden;"><a href="/life/368.html" target="_blank"><img src="__IMAGES__/327.jpg" width="83" title="骑摆记：比利时车手Joris的尼泊尔野马河谷山地车之旅" /></a></div>
-<div style="float:right;width:145px;height:52px; overflow:hidden;"><a href="/life/368.html" target="_blank" title="骑摆记：比利时车手Joris的尼泊尔野马河谷山地车之旅">骑摆记：比利时车手Joris的尼泊尔野马河谷山</a></div>
+<div style="float:left;width:85px;height:55px; overflow:hidden;"><a href="{:url('article/article',array('artid',$val['id']))}" target="_blank"><img src="{$val.thumb}" width="83" title="{$val.title}" /></a></div>
+<div style="float:right;width:145px;height:52px; overflow:hidden;"><a href="{:url('article/article',array('artid',$val['id']))}" target="_blank" title="{$val.title}">{$val.title}</a></div>
 </li>
-<li style="border-bottom:dashed 1px #ccc;height:70px; margin-bottom:15px;">
-<div style="float:left;width:85px;height:55px; overflow:hidden;"><a href="/life/378.html" target="_blank"><img src="__IMAGES__/335.jpg" width="83" title="深圳设计师浩子和77的11天成都-稻城自虐骑行" /></a></div>
-<div style="float:right;width:145px;height:52px; overflow:hidden;"><a href="/life/378.html" target="_blank" title="深圳设计师浩子和77的11天成都-稻城自虐骑行">深圳设计师浩子和77的11天成都-稻城自虐骑行</a></div>
-</li>
-<li style="border-bottom:dashed 1px #ccc;height:70px; margin-bottom:15px;">
-<div style="float:left;width:85px;height:55px; overflow:hidden;"><a href="/life/389.html" target="_blank"><img src="__IMAGES__/347.jpg" width="83" title="执着的小辫与西藏的骑车旅行" /></a></div>
-<div style="float:right;width:145px;height:52px; overflow:hidden;"><a href="/life/389.html" target="_blank" title="执着的小辫与西藏的骑车旅行">执着的小辫与西藏的骑车旅行</a></div>
-</li>
-<li style="border-bottom:dashed 1px #ccc;height:70px; margin-bottom:15px;">
-<div style="float:left;width:85px;height:55px; overflow:hidden;"><a href="/life/388.html" target="_blank"><img src="__IMAGES__/351.jpg" width="83" title="玄白朱单骑英国第二季 芒特索洛尔骑行" /></a></div>
-<div style="float:right;width:145px;height:52px; overflow:hidden;"><a href="/life/388.html" target="_blank" title="玄白朱单骑英国第二季 芒特索洛尔骑行">玄白朱单骑英国第二季 芒特索洛尔骑行</a></div>
-</li>
-<li style="border-bottom:dashed 1px #ccc;height:70px; margin-bottom:15px;">
-<div style="float:left;width:85px;height:55px; overflow:hidden;"><a href="/life/382.html" target="_blank"><img src="__IMAGES__/345.jpg" width="83" title="子弹传球：北京-香港4000多公里单车寻爱之旅" /></a></div>
-<div style="float:right;width:145px;height:52px; overflow:hidden;"><a href="/life/382.html" target="_blank" title="子弹传球：北京-香港4000多公里单车寻爱之旅">子弹传球：北京-香港4000多公里单车寻爱之旅</a></div>
-</li>
-
-
-
+{/volist}
 </ul>
-                </div>
-            
-            <div class="widget portrait">
-    <div>
-        <div class="textwidget">
-            <a href="/tougao.html"><img src="__STYLE__/img/tg.jpg" alt="鎶曠ǹ"></a><br><br>          
-<script type="text/javascript">BAIDU_CLB_fillSlot("870073");</script>
-<script type="text/javascript">BAIDU_CLB_fillSlot("870080");</script>
-<script type="text/javascript">BAIDU_CLB_fillSlot("870081");</script>
-        </div>
-    </div>
-</div>
-                
+                </div>      
                 
             </div>
             <div class="clear">

@@ -37,4 +37,5 @@ class Cate extends Common
 
 		return $sonids;
 	}
+
 }

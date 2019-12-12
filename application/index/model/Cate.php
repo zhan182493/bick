@@ -27,4 +27,33 @@ class Cate extends Model
 
 		return $sonids;
 	}
+
+	public function getParentCname($cateid){
+		$cateRes=$this->select();
+		$cateOne=$this->find($cateid);
+		$parentCname=$this->_getParentCname($cateid,$cateRes);
+		$parentCname[]=array(
+				'catename'=>$cateOne['catename'],
+				'id'=>$cateOne['id'],
+				'type'=>$cateOne['type'],
+			);
+		return $parentCname;
+	}
+
+	public function _getParentCname($cateid,$cateRes){
+		static $arr=array();
+		static $arrP=array();
+		$cateOne=$this->find($cateid);
+
+		foreach ($cateRes as $k => $v) {
+			if($cateOne['pid']==$v['id']){
+				$arr['catename']=$v['catename'];
+				$arr['type']=$v['type'];
+				$arr['id']=$v['id'];
+				$arrP[]=$arr;
+				$this->_getParentCname($v['id'],$cateRes);
+			}
+		}
+		return $arrP;
+	}
 }
